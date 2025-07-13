@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>NetPrime LIVE 3.5</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+</head>
+<body>
+  <div id="pinScreen">
+    <div class="pinBox">
+      <h1>🎬 Wprowadź kod dostępu</h1>
+      <input type="password" id="pinInput" placeholder="PIN (2137)">
+      <button onclick="verifyPin()">Zatwierdź</button>
+      <p id="pinError"></p>
+    </div>
+  </div>
+
+  <div id="mainContent" class="hidden">
+    <header>
+      <h2>NetPrime LIVE</h2>
+      <div class="tools">
+        <button onclick="toggleTheme()">🌓</button>
+        <button onclick="toggleFullscreen()">⛶</button>
+        <button onclick="copyUrl()">🔗</button>
+        <a href="https://discord.com" target="_blank" class="discordBtn">💬 Discord</a>
+      </div>
+    </header>
+
+    <div class="status" id="streamStatus">Sprawdzam transmisję...</div>
+
+    <div class="videoContainer">
+      <video id="livePlayer" autoplay muted controls playsinline></video>
+    </div>
+
+    <div class="settingsPanel">
+      <label>🎚️ Jasność <input type="range" id="brightnessSlider" min="50" max="150" value="100"></label>
+      <label>🎨 Kontrast <input type="range" id="contrastSlider" min="50" max="150" value="100"></label>
+      <label>📶 Jakość:
+        <select id="qualitySelector">
+          <option value="1080">1080p</option>
+          <option value="720">720p</option>
+          <option value="360">360p</option>
+        </select>
+      </label>
+    </div>
+
+    <section class="chatBox">
+      <h3>💬 Live Chat</h3>
+      <div id="chatMessages" class="chatMessages"></div>
+      <input type="text" id="chatInput" placeholder="Wpisz wiadomość..." onkeypress="handleChatInput(event)">
+    </section>
+
+    <footer>
+      <p>&copy; 2025 NetPrime LIVE. Powered by Prism RTMP + HLS</p>
+    </footer>
+  </div>
+
+  <script src="js/gate.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/settings.js"></script>
+  <script src="js/status.js"></script>
+  <script src="js/chat.js"></script>
+</body>
+</html>
